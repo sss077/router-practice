@@ -1,30 +1,40 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="wrapper">
+    <Nav />
+    <router-view  v-slot="{ Component }">
+      <transition name="zoom" mode="out-in">
+        <component :is="Component" :key="$route.fullPath"></component>
+
+      </transition>
+    </router-view>
+  </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Header from "@/components/Header.vue"
+import Nav from "@/components/common/Nav.vue"
+export default {
+  data() {
+  },
+  components: {
+    Header,
+    
+    Nav
   }
+}
+</script>
+<style lang="scss">
+.zoom-enter-from{
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.zoom-enter-active {
+  transition: .4s ease-out;
+} 
+.zoom-leave-to{
+opacity: 0;
+transform: translateX(-100%);
+}
+.zoom-leave-active{
+  transition: all .4s ease-in;
 }
 </style>

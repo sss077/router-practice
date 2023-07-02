@@ -1,0 +1,14 @@
+.nav{
+    background: $primmary-color;
+    padding: 25px 0;
+ &__list{
+    display: flex;
+    gap: 20px;
+ }
+ .container{
+    display: flex;
+    justify-content: space-between;
+ }
+}
+
+

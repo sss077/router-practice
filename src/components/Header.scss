@@ -1,0 +1,11 @@
+.header{
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    &__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow:1 ;
+    }
+}
